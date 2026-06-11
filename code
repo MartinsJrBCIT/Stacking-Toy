@@ -1,0 +1,63 @@
+def nextLines(nextChoice, stackIncrease):
+    
+    pass
+
+
+
+from queue import LifoQueue
+import time
+st = LifoQueue()
+
+
+RR = "Red Ring"
+BR = "Blue Ring"
+GR = "Green Ring"
+YR = "Yellow Ring"
+OR = "Orange Ring"
+
+
+
+
+print("Welcome to my stacking toy game! You can stack the toys as you please.")
+print("The toys are: Red Ring, Blue Ring, Green Ring, Yellow Ring, and Orange Ring.")
+print("Stack the toys which ever order you like input the numbers shown to place which ring you want")
+print(" (1) Red Ring (2) Blue Ring (3) Green Ring (4) Yellow Ring (5) Orange Ring ")
+
+ringChoice = float(input())
+stackIncrease = 0
+while ringChoice:
+    if ringChoice == 1:
+        st.put(RR)
+        nextChoice = RR
+        print(st.get())
+        stackIncrease = stackIncrease + 1
+        time.sleep(1)
+        print(f"(for reference for the stack Increase: {stackIncrease}")
+        
+    elif ringChoice == 2:
+        st.put(BR)
+        nextChoice = BR
+        print(st.get())
+        stackIncrease = stackIncrease + 1
+        time.sleep(1)
+        print(f"(for reference for the stack Increase: {stackIncrease}")
+    elif ringChoice == 3:
+        st.put(GR)
+        nextChoice = GR
+        print(st.get())
+        stackIncrease = stackIncrease + 1
+        time.sleep(1)
+        print(f"(for reference for the stack Increase: {stackIncrease}")
+    elif ringChoice == 4:
+        st.put(YR)
+        nextChoice = YR
+        print(st.get())
+        stackIncrease = stackIncrease + 1
+        time.sleep(1)
+    elif ringChoice == 5:
+        st.put(OR)
+        nextChoice = OR
+        print(st.get())
+        stackIncrease = stackIncrease + 1
+        time.sleep(1)
+        
