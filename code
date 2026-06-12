@@ -1,5 +1,13 @@
-def nextLines(nextChoice, stackIncrease):
-    
+def nextLines(ringChoice, nextChoice, stackIncrease):
+    st.put(nextChoice)
+    print("Select your next choice!")
+    ringChoice2 = float(input())
+    print(" (1) Red Ring (2) Blue Ring (3) Green Ring (4) Yellow Ring (5) Orange Ring ")
+    while ringChoice2:
+        if ringChoice2 == ringChoice:
+            print("You can't use the same ring bro!")
+        
+        
     pass
 
 
@@ -33,6 +41,8 @@ while ringChoice:
         stackIncrease = stackIncrease + 1
         time.sleep(1)
         print(f"(for reference for the stack Increase: {stackIncrease}")
+        nextLines(ringChoice, nextChoice, stackIncrease)
+        break
         
     elif ringChoice == 2:
         st.put(BR)
@@ -41,6 +51,9 @@ while ringChoice:
         stackIncrease = stackIncrease + 1
         time.sleep(1)
         print(f"(for reference for the stack Increase: {stackIncrease}")
+        nextLines(ringChoice, nextChoice, stackIncrease)
+        break
+    
     elif ringChoice == 3:
         st.put(GR)
         nextChoice = GR
@@ -48,16 +61,27 @@ while ringChoice:
         stackIncrease = stackIncrease + 1
         time.sleep(1)
         print(f"(for reference for the stack Increase: {stackIncrease}")
+        nextLines(ringChoice, nextChoice, stackIncrease)
+        break
+    
     elif ringChoice == 4:
         st.put(YR)
         nextChoice = YR
         print(st.get())
         stackIncrease = stackIncrease + 1
         time.sleep(1)
+        print(f"(for reference for the stack Increase: {stackIncrease}")
+        nextLines(ringChoice, nextChoice, stackIncrease)
+        break
+    
     elif ringChoice == 5:
         st.put(OR)
         nextChoice = OR
         print(st.get())
         stackIncrease = stackIncrease + 1
         time.sleep(1)
+        print(f"(for reference for the stack Increase: {stackIncrease}")
+        nextLines(ringChoice, nextChoice, stackIncrease)
+        break
+    
         
