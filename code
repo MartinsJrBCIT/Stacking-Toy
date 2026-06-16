@@ -1,22 +1,26 @@
 import time
 
 
+
+
 #Function used to test whether you want to remove a ring or keep placing rings
 def removeOrNah():
     if len(stack) == 0:
         print("You need at least 1 ring to remove rings!")
         pass
     else:
-        
+       
         print("Do you want to remove a Ring or no?\nY/N")
         remove = input()
+
+
 
 
         if remove == "Y":
             stack.pop()
             print("Ring removed successfully!")
             removeOrNah()
-        
+       
         elif remove == "N":
             print("No ring removed.")
             pass
@@ -24,12 +28,17 @@ def removeOrNah():
             print("Invalid input. Please enter Y or N.")
             removeOrNah()
 
+
 #List which stores the rings
 stack = []
 
 
+
+
 print(" Stack toys here:\n\n")
 while True:
+
+
 
 
     print(" Which color you want to stack: \n 1. Red Ring \n 2. Green Ring \n 3. Blue Ring \n 4. Yellow Ring \n 5. Orange Ring")
@@ -40,15 +49,21 @@ while True:
        
 
 
+
+
     elif color == "2":
         #Green Ring
         color = "\033[32m|--GREEN--|\033[0m"
+
+
 
 
        
     elif color == "3":
         #Blue Ring
         color = "\033[34m|-BLUE-|\033[0m"
+
+
 
 
        
@@ -58,10 +73,14 @@ while True:
         color = "\033[33m|---YELLOW---|\033[0m"
 
 
+
+
        
     elif color == "5":
         #Orange Ring
         color = "\033[38;2;255;165;0m|----ORANGE----|\033[0m"
+
+
 
 
        
@@ -77,12 +96,15 @@ while True:
     print("Toy stacked successfully!")
     print("Current stack:")
 
+
         #Used to check for duplicate colors in a ring
     usedColors = len(stack) > len(set(stack))
    
     for ring in reversed(stack):
        
         print(ring)
+
+
 
 
 # checks for a full stack of rings
@@ -97,3 +119,5 @@ while True:
         print("Dont worry, just try a different ring.")
     else:
         removeOrNah()
+   
+
