@@ -1,17 +1,6 @@
 import time
 
-ansi_colormap = {
-        "Red Ring": ("\033[31m|-----RED-----|\033[0m"),
-        "Orange Ring":("\033[38;2;255;165;0m|----ORANGE----|\033[;0m"),
-        "Yellow Ring":("\033[33m|---YELLOW---|\033[0m"),
-        "Green Ring":("\033[32m|--GREEN--|\033[0m"),
-        "Blue Ring":("\033[34m|-BLUE-|\033[0m"),
-    }
-RESET = "\033[0m"
-def stackToy():
-    pass
-
-
+#Function used to test whether you want to remove a ring or keep placing rings
 def removeOrNah():
     print("Do you want to remove a Ring or no?\nY/N")
     remove = input()
@@ -29,7 +18,7 @@ def removeOrNah():
         print("Invalid input. Please enter Y or N.")
         removeOrNah()
 
-
+#List which stores the rings
 stack = []
 
 
@@ -40,28 +29,32 @@ while True:
     print(" Which color you want to stack: \n 1. Red Ring \n 2. Green Ring \n 3. Blue Ring \n 4. Yellow Ring \n 5. Orange Ring")
     color = input("Enter the number of the color of the toy you want to stack: ")
     if color == "1":
-       
+       #Red Ring
         color = "\033[31m|-----RED-----|\033[0m"
        
 
 
     elif color == "2":
+        #Green Ring
         color = "\033[32m|--GREEN--|\033[0m"
 
 
        
     elif color == "3":
+        #Blue Ring
         color = "\033[34m|-BLUE-|\033[0m"
 
 
        
        
     elif color == "4":
+        #YelloW Ring
         color = "\033[33m|---YELLOW---|\033[0m"
 
 
        
     elif color == "5":
+        #Orange Ring
         color = "\033[38;2;255;165;0m|----ORANGE----|\033[0m"
 
 
@@ -73,10 +66,12 @@ while True:
    
     
     
-    
+    #Adds Color to stack
     stack.append(color)
     print("Toy stacked successfully!")
     print("Current stack:")
+
+        #Used to check for duplicate colors in a ring
     usedColors = len(stack) > len(set(stack))
     
     for ring in reversed(stack):
@@ -88,7 +83,7 @@ while True:
     if len(stack) > 5:
         print("Stack is full, you must remove a ring.")
 
-   
+   #Used to limit your ability of checking duplicate colors in a ring
     if usedColors == True:
         print("How are you gonna use multiple rings of the same color? You only have one?")
         time.sleep(1)
