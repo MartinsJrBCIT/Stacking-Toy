@@ -1,3 +1,5 @@
+import time
+
 ansi_colormap = {
         "Red Ring": ("\033[31m|-----RED-----|\033[0m"),
         "Orange Ring":("\033[38;2;255;165;0m|----ORANGE----|\033[;0m"),
@@ -17,7 +19,6 @@ def removeOrNah():
 
     if remove == "Y":
         stack.pop()
-        usedColors.pop()
         print("Ring removed successfully!")
         removeOrNah()
        
@@ -30,7 +31,8 @@ def removeOrNah():
 
 
 stack = []
-usedColors = []
+
+
 print(" Stack toys here:\n\n")
 while True:
 
@@ -69,30 +71,14 @@ while True:
         color = input("Enter the number of the color of the toy you want to stack: ")
         continue
    
-    if color.count("\033[31m|-----RED-----|\033[0m") > 1:
-        print("You cant use the same ring twice")
-        removeOrNah()
-   
-    if color.count("\033[32m|--GREEN--|\033[0m") > 1:
-        print("You cant use the same ring twice")
-        removeOrNah()
-
-
-    if color.count("\033[34m|-BLUE-|\033[0m") > 1:
-        print("You cant use the same ring twice")
-        removeOrNah()
-   
-    if color.count("\033[33m|---YELLOW---|\033[0m") > 1:
-        print("You cant use the same ring twice")
-        removeOrNah()
-   
-    if color.count("\033[38;2;255;165;0m|----ORANGE----|\033[0m") > 1:
-        print("You cant use the same ring twice")
-        removeOrNah()
+    
+    
+    
     stack.append(color)
-    usedColors.append(color)
     print("Toy stacked successfully!")
     print("Current stack:")
+    usedColors = len(stack) > len(set(stack))
+    
     for ring in reversed(stack):
        
         print(ring)
@@ -102,9 +88,11 @@ while True:
     if len(stack) > 5:
         print("Stack is full, you must remove a ring.")
 
-
-       
-    removeOrNah()
    
-   
-
+    if usedColors == True:
+        print("How are you gonna use multiple rings of the same color? You only have one?")
+        time.sleep(1)
+        stack.pop()
+        print("Dont worry, just try a different ring.")
+    else:
+        removeOrNah()
