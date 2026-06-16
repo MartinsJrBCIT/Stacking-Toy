@@ -1,87 +1,110 @@
-def nextLines(ringChoice, nextChoice, stackIncrease):
-    st.put(nextChoice)
-    print("Select your next choice!")
-    ringChoice2 = float(input())
-    print(" (1) Red Ring (2) Blue Ring (3) Green Ring (4) Yellow Ring (5) Orange Ring ")
-    while ringChoice2:
-        if ringChoice2 == ringChoice:
-            print("You can't use the same ring bro!")
-        
-        
+ansi_colormap = {
+        "Red Ring": ("\033[31m|-----RED-----|\033[0m"),
+        "Orange Ring":("\033[38;2;255;165;0m|----ORANGE----|\033[;0m"),
+        "Yellow Ring":("\033[33m|---YELLOW---|\033[0m"),
+        "Green Ring":("\033[32m|--GREEN--|\033[0m"),
+        "Blue Ring":("\033[34m|-BLUE-|\033[0m"),
+    }
+RESET = "\033[0m"
+def stackToy():
     pass
 
 
-
-from queue import LifoQueue
-import time
-st = LifoQueue()
-
-
-RR = "Red Ring"
-BR = "Blue Ring"
-GR = "Green Ring"
-YR = "Yellow Ring"
-OR = "Orange Ring"
+def removeOrNah():
+    print("Do you want to remove a Ring or no?\nY/N")
+    remove = input()
 
 
+    if remove == "Y":
+        stack.pop()
+        usedColors.pop()
+        print("Ring removed successfully!")
+        removeOrNah()
+       
+    elif remove == "N":
+        print("No ring removed.")
+        pass
+    else:
+        print("Invalid input. Please enter Y or N.")
+        removeOrNah()
 
 
-print("Welcome to my stacking toy game! You can stack the toys as you please.")
-print("The toys are: Red Ring, Blue Ring, Green Ring, Yellow Ring, and Orange Ring.")
-print("Stack the toys which ever order you like input the numbers shown to place which ring you want")
-print(" (1) Red Ring (2) Blue Ring (3) Green Ring (4) Yellow Ring (5) Orange Ring ")
+stack = []
+usedColors = []
+print(" Stack toys here:\n\n")
+while True:
 
-ringChoice = float(input())
-stackIncrease = 0
-while ringChoice:
-    if ringChoice == 1:
-        st.put(RR)
-        nextChoice = RR
-        print(st.get())
-        stackIncrease = stackIncrease + 1
-        time.sleep(1)
-        print(f"(for reference for the stack Increase: {stackIncrease}")
-        nextLines(ringChoice, nextChoice, stackIncrease)
-        break
-        
-    elif ringChoice == 2:
-        st.put(BR)
-        nextChoice = BR
-        print(st.get())
-        stackIncrease = stackIncrease + 1
-        time.sleep(1)
-        print(f"(for reference for the stack Increase: {stackIncrease}")
-        nextLines(ringChoice, nextChoice, stackIncrease)
-        break
-    
-    elif ringChoice == 3:
-        st.put(GR)
-        nextChoice = GR
-        print(st.get())
-        stackIncrease = stackIncrease + 1
-        time.sleep(1)
-        print(f"(for reference for the stack Increase: {stackIncrease}")
-        nextLines(ringChoice, nextChoice, stackIncrease)
-        break
-    
-    elif ringChoice == 4:
-        st.put(YR)
-        nextChoice = YR
-        print(st.get())
-        stackIncrease = stackIncrease + 1
-        time.sleep(1)
-        print(f"(for reference for the stack Increase: {stackIncrease}")
-        nextLines(ringChoice, nextChoice, stackIncrease)
-        break
-    
-    elif ringChoice == 5:
-        st.put(OR)
-        nextChoice = OR
-        print(st.get())
-        stackIncrease = stackIncrease + 1
-        time.sleep(1)
-        print(f"(for reference for the stack Increase: {stackIncrease}")
-        nextLines(ringChoice, nextChoice, stackIncrease)
-        break
-    
-        
+
+    print(" Which color you want to stack: \n 1. Red Ring \n 2. Green Ring \n 3. Blue Ring \n 4. Yellow Ring \n 5. Orange Ring")
+    color = input("Enter the number of the color of the toy you want to stack: ")
+    if color == "1":
+       
+        color = "\033[31m|-----RED-----|\033[0m"
+       
+
+
+    elif color == "2":
+        color = "\033[32m|--GREEN--|\033[0m"
+
+
+       
+    elif color == "3":
+        color = "\033[34m|-BLUE-|\033[0m"
+
+
+       
+       
+    elif color == "4":
+        color = "\033[33m|---YELLOW---|\033[0m"
+
+
+       
+    elif color == "5":
+        color = "\033[38;2;255;165;0m|----ORANGE----|\033[0m"
+
+
+       
+    else:
+        print("Invalid input. Please enter a number between 1 and 5.")
+        color = input("Enter the number of the color of the toy you want to stack: ")
+        continue
+   
+    if color.count("\033[31m|-----RED-----|\033[0m") > 1:
+        print("You cant use the same ring twice")
+        removeOrNah()
+   
+    if color.count("\033[32m|--GREEN--|\033[0m") > 1:
+        print("You cant use the same ring twice")
+        removeOrNah()
+
+
+    if color.count("\033[34m|-BLUE-|\033[0m") > 1:
+        print("You cant use the same ring twice")
+        removeOrNah()
+   
+    if color.count("\033[33m|---YELLOW---|\033[0m") > 1:
+        print("You cant use the same ring twice")
+        removeOrNah()
+   
+    if color.count("\033[38;2;255;165;0m|----ORANGE----|\033[0m") > 1:
+        print("You cant use the same ring twice")
+        removeOrNah()
+    stack.append(color)
+    usedColors.append(color)
+    print("Toy stacked successfully!")
+    print("Current stack:")
+    for ring in reversed(stack):
+       
+        print(ring)
+    print(RESET)
+
+
+    if len(stack) > 5:
+        print("Stack is full, you must remove a ring.")
+
+
+       
+    removeOrNah()
+   
+   
+
